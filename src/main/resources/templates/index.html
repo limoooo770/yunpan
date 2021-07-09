@@ -1,0 +1,808 @@
+﻿<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <base th:href="@{/}">
+    <title>云盘 - 让文件在云端安个家</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/media/image/favicon.png"/>
+
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="vendors/bundle.css" type="text/css">
+
+    <!-- Datepicker -->
+    <link rel="stylesheet" href="vendors/datepicker/daterangepicker.css">
+
+    <!-- Vmap -->
+    <link rel="stylesheet" href="vendors/vmap/jqvmap.min.css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="assets/css/app.css" type="text/css">
+</head>
+<body>
+
+<!-- begin::preloader-->
+<div class="preloader">
+    <div class="preloader-icon"></div>
+</div>
+<!-- end::preloader -->
+
+<!-- begin::header -->
+<div class="header">
+
+    <div>
+        <ul class="navbar-nav">
+
+            <!-- begin::navigation-toggler -->
+            <li class="nav-item navigation-toggler">
+                <a href="#" class="nav-link" title="Hide navigation">
+                    <i data-feather="arrow-left"></i>
+                </a>
+            </li>
+            <li class="nav-item navigation-toggler mobile-toggler">
+                <a href="#" class="nav-link" title="Show navigation">
+                    <i data-feather="menu"></i>
+                </a>
+            </li>
+            <!-- end::navigation-toggler -->
+
+            <li class="nav-item">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">上传</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">文件</a>
+                    <a href="#" class="dropdown-item">文件夹</a>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+    <div>
+        <ul class="navbar-nav">
+
+            <!-- begin::header search -->
+            <li class="nav-item">
+                <a href="#" class="nav-link" title="搜索" data-toggle="dropdown">
+                    <i data-feather="search"></i>
+                </a>
+                <div class="dropdown-menu p-2 dropdown-menu-right">
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="搜索">
+                            <div class="input-group-prepend">
+                                <button class="btn" type="button">
+                                    <i data-feather="search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <!-- end::header search -->
+
+            <!-- begin::header minimize/maximize -->
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link" title="全屏" data-toggle="fullscreen">
+                    <i class="maximize" data-feather="maximize"></i>
+                    <i class="minimize" data-feather="minimize"></i>
+                </a>
+            </li>
+            <!-- end::header minimize/maximize -->
+
+        </ul>
+
+        <!-- begin::mobile header toggler -->
+        <ul class="navbar-nav d-flex align-items-center">
+            <li class="nav-item header-toggler">
+                <a href="#" class="nav-link">
+                    <i data-feather="arrow-down"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- end::mobile header toggler -->
+    </div>
+
+</div>
+<!-- end::header -->
+
+<!-- begin::main -->
+<div id="main">
+
+    <!-- begin::navigation -->
+    <div class="navigation">
+
+        <div class="navigation-menu-tab">
+            <div>
+                <div class="navigation-menu-tab-header" data-toggle="tooltip" title="花木兰" data-placement="right">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
+                        <figure class="avatar avatar-sm">
+                            <img src="assets/media/image/user/women_avatar1.jpg" class="rounded-circle" alt="avatar">
+                        </figure>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-big">
+                        <div class="p-3 text-center" data-backround-image="assets/media/image/image1.jpg">
+                            <figure class="avatar mb-3">
+                                <img src="assets/media/image/user/women_avatar1.jpg" class="rounded-circle" alt="image">
+                            </figure>
+                            <h6 class="d-flex align-items-center justify-content-center">
+                                花木兰
+                                <a href="#" class="btn btn-primary btn-sm ml-2" data-toggle="tooltip" title="编辑个人资料">
+                                    <i data-feather="edit-2"></i>
+                                </a>
+                            </h6>
+                            <small>等级: <strong>珀金</strong></small>
+                        </div>
+                        <div class="dropdown-menu-body">
+                            <div class="border-bottom p-4">
+                                <h6 class="text-uppercase font-size-11 d-flex justify-content-between">
+                                    存储空间
+                                    <span>%25</span>
+                                </h6>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 35%;"
+                                         aria-valuenow="35"
+                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item">个人中心</a>
+                                <a href="#" class="list-group-item d-flex">
+                                    收件箱 <span class="text-muted ml-auto">18</span>
+                                </a>
+                                <a href="#" class="list-group-item" data-sidebar-target="#settings">帮助中心</a>
+                                <a href="login.html" class="list-group-item text-danger" data-sidebar-target="#settings">登出!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-grow-1">
+                <ul>
+                    <li>
+                        <a  href="#" data-toggle="tooltip" data-placement="right" title="我的报表"
+                           data-nav-target="#dashboards">
+                            <i data-feather="bar-chart-2"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="active" href="#" data-toggle="tooltip" data-placement="right" title="我的云盘" data-nav-target="#mycloud">
+                            <i data-feather="home"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="我的分享"
+                           data-nav-target="#shares">
+                            <i data-feather="layers"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="回收站" data-nav-target="#trashes">
+                            <i data-feather="archive"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="设置" data-nav-target="#settings">
+                            <i data-feather="settings"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login.html" data-toggle="tooltip" data-placement="right" title="登出">
+                            <i data-feather="log-out"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- begin::navigation menu -->
+        <div class="navigation-menu-body">
+
+            <!-- begin::navigation-logo -->
+            <div>
+                <div id="navigation-logo">
+                    <a href="index.html">
+                        <img class="logo" src="assets/media/image/logo.png" alt="logo">
+                        <img class="logo-light" src="assets/media/image/logo-light.png" alt="light logo">
+                    </a>
+                </div>
+            </div>
+            <!-- end::navigation-logo -->
+
+            <div class="navigation-menu-group">
+
+                <div id="dashboards">
+                    <ul>
+                        <li class="navigation-divider">我的报表</li>                   
+                        <li><a class="active" href="dashboard-three.html">大屏展示</a></li>
+                        <li><a href="dashboard-four.html">分析</a></li>
+                    </ul>
+                    <div class="card-body">
+                        <h6 class="mb-4">存储状态</h6>
+                        <div class="d-flex align-items-center">
+                            <div class="mr-3">
+                                <i data-feather="database" class="width-30 height-30"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="progress" style="height: 10px">
+                                    <div class="progress-bar progress-bar-striped" role="progressbar"
+                                         style="width: 40%" aria-valuenow="10" aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                                <div class="line-height-12 small text-muted mt-2">共2500GB，已使用200GB</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="open"  id="mycloud">
+                    <ul>
+                        <li class="navigation-divider">我的云盘</li>
+                        <li>
+                            <a href="index.html">
+                                <span>所有文件</span>
+                               
+                            </a>
+                        </li>
+                        <li>
+                            <a href="images-index.html">
+                                <span>图片</span>
+                               
+                            </a>
+                        </li>
+                        <li>
+                            <a href="inbox.html">
+                                <span>文档</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="app-todo.html">
+                                <span>视频</span>
+                                
+                            </a>
+                        </li>
+                        <li>
+                            <a href="file-manager.html">
+                                <span>音乐</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="calendar.html">
+                                <span>其他</span>
+                            </a>
+                        </li>
+                    </ul>
+ 
+                </div>
+                <div id="shares">
+                    <ul>
+                        <li class="navigation-divider">我的分享</li>
+                        <li><a href="avatar.html">我的分享</a></li>
+                        <li><a href="icons.html">取消所有分享</a></li>
+                    </ul>
+                </div>
+                <div id="trashes">
+                    <ul>
+                        <li class="navigation-divider">回收站</li>
+                        <li><a href="login.html">我的回收站</a></li>
+                        <li><a href="register.html">清空</a></li>
+
+                    </ul>
+                </div>
+                <div id="settings">
+                    <ul>
+                        <li class="navigation-divider">设置</li>
+                        <li><a href="login.html">个人中心</a></li>
+                        <li><a href="login.html">全局设置</a></li>
+                        <li><a href="recover-password.html">重置密码</a></li>
+                       
+         
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end::navigation menu -->
+
+    </div>
+    <!-- end::navigation -->
+
+    <!-- begin::main-content -->
+    <div class="main-content">
+
+        <!-- begin::page-header -->
+        <div class="page-header">
+            <div class="container-fluid d-sm-flex justify-content-between">
+                <h4>所有文件</h4>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">我的云盘</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">所有文件</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- end::page-header -->
+
+        <!-- begin::page content -->
+        <div class="container-fluid">
+
+            <div class="row app-block">
+                <div class="col-md-12 app-content">
+
+                    <div class="card app-content-body">
+
+                        <div class="card-body">
+
+                            <h6 class="font-size-11 text-uppercase mb-4">最近上传</h6>
+
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
+                                    <div class="card app-file-list">
+                                        <div class="app-file-icon">
+                                            <i class="fa fa-file-pdf-o text-danger"></i>
+                                            <div class="dropdown position-absolute top-0 right-0 mr-2">
+                                                <a href="#" class="font-size-14" data-toggle="dropdown">
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a href="#" class="dropdown-item">查看</a>
+                                                    <a href="#" class="dropdown-item">分享</a>
+                                                    <a href="#" class="dropdown-item">下载</a>
+                                                    <a href="#" class="dropdown-item">拷贝到</a>
+                                                    <a href="#" class="dropdown-item">移动到</a>
+                                                    <a href="#" class="dropdown-item">重命名</a>
+                                                    <a href="#" class="dropdown-item">删除</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-2 small">
+                                            <div>resume.pdf</div>
+                                            <div class="text-muted">1.2mb</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
+                                    <div class="card app-file-list">
+                                        <div class="app-file-icon">
+                                            <i class="fa fa-file-excel-o text-success"></i>
+                                            <div class="dropdown position-absolute top-0 right-0 mr-2">
+                                                <a href="#" class="font-size-14" data-toggle="dropdown">
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a href="#" class="dropdown-item">查看</a>
+                                                    <a href="#" class="dropdown-item">分享</a>
+                                                    <a href="#" class="dropdown-item">下载</a>
+                                                    <a href="#" class="dropdown-item">拷贝到</a>
+                                                    <a href="#" class="dropdown-item">移动到</a>
+                                                    <a href="#" class="dropdown-item">重命名</a>
+                                                    <a href="#" class="dropdown-item">删除</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-2 small">
+                                            <div>last-months-report.xlsx</div>
+                                            <div class="text-muted">120.85kb</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
+                                    <div class="card app-file-list">
+                                        <div class="app-file-icon">
+                                            <i class="fa fa-file-text-o text-warning"></i>
+                                            <div class="dropdown position-absolute top-0 right-0 mr-2">
+                                                <a href="#" class="font-size-14" data-toggle="dropdown">
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a href="#" class="dropdown-item">查看</a>
+                                                    <a href="#" class="dropdown-item">分享</a>
+                                                    <a href="#" class="dropdown-item">下载</a>
+                                                    <a href="#" class="dropdown-item">拷贝到</a>
+                                                    <a href="#" class="dropdown-item">移动到</a>
+                                                    <a href="#" class="dropdown-item">重命名</a>
+                                                    <a href="#" class="dropdown-item">删除</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-2 small">
+                                            <div>todo-list.txt</div>
+                                            <div class="text-muted">1.85kb</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
+                                    <div class="card app-file-list">
+                                        <div class="app-file-icon">
+                                            <i class="fa fa-file-pdf-o text-danger"></i>
+                                            <div class="dropdown position-absolute top-0 right-0 mr-2">
+                                                <a href="#" class="font-size-14" data-toggle="dropdown">
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a href="#" class="dropdown-item">查看</a>
+                                                    <a href="#" class="dropdown-item">分享</a>
+                                                    <a href="#" class="dropdown-item">下载</a>
+                                                    <a href="#" class="dropdown-item">拷贝到</a>
+                                                    <a href="#" class="dropdown-item">移动到</a>
+                                                    <a href="#" class="dropdown-item">重命名</a>
+                                                    <a href="#" class="dropdown-item">删除</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-2 small">
+                                            <div>resume.pdf</div>
+                                            <div class="text-muted">1.2mb</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
+                                    <div class="card app-file-list">
+                                        <div class="app-file-icon">
+                                            <i class="fa fa-file-pdf-o text-danger"></i>
+                                            <div class="dropdown position-absolute top-0 right-0 mr-2">
+                                                <a href="#" class="font-size-14" data-toggle="dropdown">
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a href="#" class="dropdown-item">查看</a>
+                                                    <a href="#" class="dropdown-item">分享</a>
+                                                    <a href="#" class="dropdown-item">下载</a>
+                                                    <a href="#" class="dropdown-item">拷贝到</a>
+                                                    <a href="#" class="dropdown-item">移动到</a>
+                                                    <a href="#" class="dropdown-item">重命名</a>
+                                                    <a href="#" class="dropdown-item">删除</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-2 small">
+                                            <div>resume.pdf</div>
+                                            <div class="text-muted">1.2mb</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+
+                        </div>
+
+                    </div>
+                    <div>&nbsp;</div>
+                    <div class="card app-content-body">
+                        <div class="card-body">
+                            <!-- 文件选择模态框-->
+                            <div class="modal" tabindex="-1" role="dialog" id="select-file-dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">上传文件</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form id="upload-file-frm" action="/storage/uploadfile" method="post" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                    <label for="select-upload-file">请选择你要上传的文件</label>
+                                                    <input type="hidden" name="parentKey" th:value="${session.parentKey}">
+                                                    <input type="file" name="myfile" class="form-control-file" id="select-upload-file">
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" id="upload-file-now" >上传</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 创建文件模态框-->
+                            <div class="modal" tabindex="-1" role="dialog" id="add-dir-dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">创建文件夹</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form id="create-dir-frm" action="/storage/createdir" method="post">
+                                                <div class="form-group">
+                                                    <label for="select-upload-file">请输入文件夹名称</label>
+                                                    <input type="text" name="dirname" class="form-control-file">
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" id="create-dir-btn" >创建</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="app-action">
+                                <div class="action-left">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item mb-0">
+                                            <a href="#" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">
+                                                <i data-feather="plus" class="mr-2"></i>
+                                                添加
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#" id="file-upload-link" data-toggle="modal" data-target="#select-file-dialog">文件</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#add-dir-dialog">文件夹</a>
+
+                                            </div>
+                                        </li>
+                                        <li class="list-inline-item mb-0">
+                                            <a href="#" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">文件夹</a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item d-flex justify-content-between" href="#">
+                                                    我的视频
+                                                    <span class="text-muted">21</span>
+                                                </a>
+                                                <a class="dropdown-item d-flex justify-content-between" href="#">
+                                                    我的相册
+                                                    <span class="text-muted">5</span>
+                                                </a>
+                                                <a class="dropdown-item d-flex justify-content-between" href="#">
+                                                    我的音乐
+                                                    <span class="text-muted">12</span>
+                                                </a>
+                                                <a class="dropdown-item d-flex justify-content-between" href="#">
+                                                    我的文档
+                                                    <span class="text-muted">7</span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="list-inline-item mb-0">
+                                            <a href="#" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">
+                                                排序
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">日期</a>
+                                                <a class="dropdown-item" href="#">名称</a>
+                                                <a class="dropdown-item" href="#">大小</a>
+                                            </div>
+                                        </li>
+                                        <li class="list-inline-item mb-0">
+                                            <a href="#" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">
+                                                更多操作
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">分享</a>
+                                                <a class="dropdown-item" href="#">下载</a>
+                                                <a class="dropdown-item" href="#">拷贝到</a>
+                                                <a class="dropdown-item" href="#">移动到</a>
+                                                <a class="dropdown-item" href="#">重命名</a>
+                                                <a class="dropdown-item" href="#">删除</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <div class="action-right">
+                                    <form class="d-flex mr-3">
+                                        <a href="#" class="app-sidebar-menu-button btn btn-outline-light">
+                                            <i data-feather="menu"></i>
+                                        </a>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="搜索文件"
+                                                   aria-describedby="button-addon1">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-light" type="button" id="button-addon1">
+                                                    <i data-feather="search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <p class="font-size-11 text-uppercase mb-4">
+
+                                <a th:href="@{'/storage/tomainlist?parentKey=/'+${session.loginUser.username}}">
+
+                                    <span th:text="上一级"></span>
+                                </a>
+
+                            </p>
+                            
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                            <th scope="col">
+                                                <div class="custom-control custom-checkbox mr-3">
+                                                    <input type="checkbox" class="custom-control-input" id="checkAll">
+                                                    <label class="custom-control-label" for="checkAll">全选</label>
+                                                </div>
+                                            </th>
+                                            <th scope="col">名称</th>
+                                            <th scope="col">大小</th>
+                                            <th scope="col">修改日期</th>
+                                            <th class="text-right" scope="col">操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="cloudFile:${cloudfiles}">
+                                            <th scope="row">
+                                                <div class="custom-control custom-checkbox custom-control-inline">
+                                                    <input type="checkbox" id="customCheckBoxInline2" name="select-list" class="custom-control-input">
+                                                    <label class="custom-control-label" for="customCheckBoxInline2"></label>
+                                                </div>
+                                            </th>
+                                            <td th:if="${cloudFile.isDir()}">
+
+                                                <a th:href="@{'/storage/tomainlist?parentKey='+${cloudFile.objectKey}}">
+                                                    <span th:text="${cloudFile.fileName}"></span>
+                                                </a>
+                                            </td>
+                                                <td th:unless="${cloudFile.isDir()}">
+
+                                                    <span th:text="${cloudFile.fileName}"></span>
+                                                </td>
+                                            <td>
+                                                <span th:text="${cloudFile.isDir()?'-':#numbers.formatDecimal(cloudFile.size*1.0/(1024*1024),1,2)+'MB'}"></span>
+                                            </td>
+                                            <td>
+                                                <span th:text="${cloudFile.isDir()?'-':#dates.format(cloudFile.createTime,'yyyy-MM-dd HH:mm:ss')}"></span>
+                                            </td>
+                                            <td class="text-right">
+                                                <div class="dropdown">
+                                                <a href="#" class="btn btn-sm"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="#">查看</a>
+                                                    <a class="dropdown-item" href="#">分享</a>
+                                                    <a class="dropdown-item" th:href="@{'/storage/downloadfile?objectKey='+${cloudFile.objectKey}}">下载</a>
+                                                    <a class="dropdown-item" href="#">拷贝到</a>
+                                                    <a class="dropdown-item" href="#">移动到</a>
+                                                    <a class="dropdown-item" href="#">重命名</a>
+                                                    <a class="dropdown-item" th:href="@{'/storage/deletefile?objectKey='+${cloudFile.objectKey}}">删除</a>
+                                                </div>
+                                                </div>
+                                            </td>
+                                            </tr>
+
+                                        </tbody>
+                                        </table>
+                                        <!-- 分页开始-->
+                                        <nav aria-label="...">
+                                            <ul class="pagination justify-content-end">
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">上一页</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#">下一页</a>
+                                            </li>
+                                            </ul>
+                                        </nav>
+                                        <!-- 分页结束-->
+                                    </div>
+                                
+
+                                
+                               
+                               
+                                </div>
+                           
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            
+
+        </div>
+        <!-- end::page content -->
+
+        <!-- begin::footer -->
+        <footer>
+            <div class="container-fluid">
+                <div>© 2021 cloud disk v1.0.0 Made for <a href="#">Demo</a></div>
+                <div>
+                    <nav class="nav">
+                        <a href="" class="nav-link">免责声明</a>
+                        <a href="#" class="nav-link">帮助中心</a>
+                    </nav>
+                </div>
+            </div>
+        </footer>
+        <!-- end::footer -->
+
+    </div>
+    <!-- end::main-content -->
+
+</div>
+<!-- end::main -->
+
+<!-- Plugin scripts -->
+<script src="vendors/bundle.js"></script>
+
+<!-- Chartjs -->
+<script src="vendors/charts/chartjs/chart.min.js"></script>
+
+<!-- Apex chart -->
+<script src="vendors/charts/apex/apexcharts.min.js"></script>
+
+<!-- Circle progress -->
+<script src="vendors/circle-progress/circle-progress.min.js"></script>
+
+<!-- Peity -->
+<script src="vendors/charts/peity/jquery.peity.min.js"></script>
+<script src="assets/js/examples/charts/peity.js"></script>
+
+<!-- Datepicker -->
+<script src="vendors/datepicker/daterangepicker.js"></script>
+
+<!-- Slick -->
+<script src="vendors/slick/slick.min.js"></script>
+
+<!-- Vamp -->
+<script src="vendors/vmap/jquery.vmap.min.js"></script>
+<script src="vendors/vmap/maps/jquery.vmap.usa.js"></script>
+<script src="assets/js/examples/vmap.js"></script>
+
+<!-- Dashboard scripts -->
+<script src="assets/js/examples/dashboard.js"></script>
+<div class="colors"> <!-- To use theme colors with Javascript -->
+    <div class="bg-primary"></div>
+    <div class="bg-primary-bright"></div>
+    <div class="bg-secondary"></div>
+    <div class="bg-secondary-bright"></div>
+    <div class="bg-info"></div>
+    <div class="bg-info-bright"></div>
+    <div class="bg-success"></div>
+    <div class="bg-success-bright"></div>
+    <div class="bg-danger"></div>
+    <div class="bg-danger-bright"></div>
+    <div class="bg-warning"></div>
+    <div class="bg-warning-bright"></div>
+</div>
+
+<!-- App scripts -->
+<script src="assets/js/app.js"></script>
+
+<script>
+   //全选、全不选
+    
+      $(document).ready(function(){        
+        $("#checkAll").click(function(){
+         $(":checkbox[name='select-list']").prop("checked",this.checked);
+        });
+        $("#upload-file-now").click(function(){
+              $("#upload-file-frm").submit();
+        });
+          $("#create-dir-btn").click(function(){
+              $("#create-dir-frm").submit();
+          });
+
+      });
+
+</script>
+</body>
+</html>
